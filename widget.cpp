@@ -65,6 +65,13 @@ Widget::Widget(QWidget *parent)
 
 }
 
+void Widget::on_pushButton_execute_clicked()
+{
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery(ui->textEdit_query->toPlainText());
+    ui->tableView_custom_query->setModel(model);
+    ui->tableView_custom_query->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
 Widget::~Widget()
 {
     delete ui;
@@ -215,3 +222,4 @@ void Widget::on_pushButton_clicked()
 
     }
 }
+

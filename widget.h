@@ -39,6 +39,7 @@ private slots:
 
     void on_reSelect_clients();
 
+    void on_pushButton_execute_clicked();
 private:
     Ui::Widget *ui;
     QSqlDatabase db;

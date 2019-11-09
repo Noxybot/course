@@ -18,14 +18,14 @@ FormForAdding::FormForAdding(QSqlDatabase& _db, QWidget *parent) :
 
     QSqlQueryModel *model_client_names = new QSqlQueryModel;
     QTableView *view_clients = new QTableView;
-    view_clients->setSelectionBehavior(QAbstractItemView::SelectRows);
-    view_clients->setSelectionMode(QAbstractItemView::SingleSelection);
     model_client_names->setQuery("SELECT * FROM clients;");
     ui->comboBox_cred_card->setModel(model_client_names);
     ui->comboBox_cred_card->setView(view_clients);
     view_clients->setColumnHidden(4, true);
     view_clients->setColumnHidden(5, true);
     view_clients->setColumnHidden(6, true);
+    view_clients->setSelectionBehavior(QAbstractItemView::SelectRows);
+    view_clients->setSelectionMode(QAbstractItemView::SingleSelection);
     view_clients->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
 
