@@ -18,17 +18,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     formforadding.cpp \
     formforediting.cpp \
+    formforsearchingagreements.cpp \
+    formforsearchingbikes.cpp \
+    formforsearchingclients.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
+    ClientInfo.h \
     formforadding.h \
     formforediting.h \
+    formforsearchingagreements.h \
+    formforsearchingbikes.h \
+    formforsearchingclients.h \
     widget.h
 
 FORMS += \
     formforadding.ui \
     formforediting.ui \
+    formforsearchingagreements.ui \
+    formforsearchingbikes.ui \
+    formforsearchingclients.ui \
     widget.ui
 
 # Default rules for deployment.
