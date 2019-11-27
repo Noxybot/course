@@ -5,7 +5,12 @@
 #include "formforsearchingclients.h"
 #include "formforsearchingbikes.h"
 #include "formforsearchingagreements.h"
+#include "formforaddingbikes.h"
+#include "formforaddingrentplace.h"
+#include "formforagrstats.h"
 #include "ClientInfo.h"
+
+#include <QDebug>
 
 #include <QWidget>
 #include <QSqlDatabase>
@@ -15,6 +20,11 @@
 #include <QString>
 #include <QSqlQueryModel>
 #include <QTreeView>
+#include <QTextStream>
+#include <QDate>
+#include <QPrinter>
+#include <QTextDocument>
+#include <QPrintDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -84,7 +94,7 @@ private slots:
 
     void on_tableView_clients_clicked(const QModelIndex &index);
 
-    void on_addngWidget_ok_clicked(QString start_date, QString end_date, QString cred_card, int bike_id, int place_id);
+    void on_addngWidget_ok_clicked(QString start_date, QString end_date, QString cred_card, int bike_id, int place_id, int sum);
 
     void on_pushButton_clicked();
 
@@ -95,6 +105,75 @@ private slots:
 
 
     void on_tableView_rent_agreement_clicked(const QModelIndex &index);
+
+    void ShowStats()
+    {
+        auto t = new FormForAgrStats();
+        t->show();
+    }
+
+
+    void AddBike(BikeInfo info, bool adding);
+    void AddRentPlace(RentPlaceInfo info, bool adding);
+
+
+
+
+    void PrintAgreements()
+    {
+        QString strStream;
+        QTextStream out(&strStream);
+        QString title = "Отчет за месяц";
+        QDate date = QDate::currentDate();
+        QSqlQueryModel *model = new QSqlQueryModel;
+        model->setQuery("select * from rent_agreemnts;");
+        const int rowCount = model->rowCount();
+        const int columnCount = model->columnCount();
+
+        out <<  "<html>\n"
+            "<head>\n"
+            "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+            <<  QString("<title>%1</title>\n").arg(title)
+            <<  "</head>\n"
+            "<body bgcolor=#ffffff link=#5000A0>\n"
+             << QString("<p align=center><span style=font-size:20.25pt;>%1</span></p>\n").arg(title)
+                << QString("<p align=center><span style=font-size:20.25pt;>%1</span></p>\n").arg(date.toString())
+            <<"<table border=1 cellspacing=0 cellpadding=1 width=100%>\n";
+
+        out << "<thead><tr bgcolor=#f0f0f0>";
+        for (int column = 0; column < columnCount; column++)
+                out << QString("<th>%1</th>").arg(model->headerData(column, Qt::Horizontal).toString());
+        out << "</tr></thead>\n";
+
+        // data table
+        for (int row = 0; row < rowCount; row++) {
+            out << "<tr>";
+            for (int column = 0; column < columnCount; column++) {
+                    QString data = model->data(model->index(row, column)).toString().simplified();
+                    out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+            }
+            out << "</tr>\n";
+        }
+        out <<  "</table>\n"
+            "</body>\n"
+            "</html>\n";
+
+        QTextDocument *document = new QTextDocument();
+        document->setHtml(strStream);
+        qDebug() << strStream;
+
+        QPrinter printer;
+
+        QPrintDialog *dialog = new QPrintDialog(&printer, nullptr);
+        if (dialog->exec() == QDialog::Accepted) {
+            document->print(&printer);
+        }
+
+        delete document;
+    }
+
+
+    void on_pushButton_print_check_clicked();
 
 private:
     Ui::Widget *ui;
@@ -109,6 +188,11 @@ private:
 
 
     QSqlQueryModel *clients_additional_model;
+
+
+
+
+
 
 };
 #endif // WIDGET_H

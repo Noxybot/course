@@ -27,6 +27,7 @@ signals:
     void updateClientsTable();
 
 private:
+    bool adding = true;
     Ui::FormForEditing *ui;
 };
 

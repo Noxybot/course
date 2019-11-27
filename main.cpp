@@ -30,7 +30,9 @@ int main(int argc, char *argv[])
 //    bikesSortMenu->addAction("По возрастанию");
 //    bikesSortMenu->addAction("По убыванию");
 
-    bikesMenu->addAction("Статистика");
+
+    QObject::connect(bikesMenu->addAction("Статистика"), SIGNAL(triggered()), w, SLOT(ShowStats()));
+
    // bikesMenu->addMenu(bikesSortMenu);
 
     QMenu *agreementsMenu = new QMenu("Договоры");
@@ -46,6 +48,9 @@ int main(int argc, char *argv[])
     mainMenu->addMenu(clientsMenu);
     mainMenu->addMenu(bikesMenu);
     mainMenu->addMenu(agreementsMenu);
+
+    QObject::connect(mainMenu->addAction("Месячный отчет"), SIGNAL(triggered()), w, SLOT(PrintAgreements()));
+
 
     QObject::connect(mainMenu->addAction("Выход"), SIGNAL(triggered()), &a, SLOT(quit()));
     wind.setMenuBar(menuBar);

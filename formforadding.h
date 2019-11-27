@@ -18,7 +18,7 @@ public:
     ~FormForAdding();
 
 signals:
-    void okClicked(QString start_date, QString end_date, QString cred_card, int bike_id, int place_id);
+    void okClicked(QString start_date, QString end_date, QString cred_card, int bike_id, int place_id, int sum);
 
 
 private slots:

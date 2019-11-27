@@ -121,6 +121,13 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_print_check">
+           <property name="text">
+            <string>Распечатать чек</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QWidget" name="tab_bike_rent">

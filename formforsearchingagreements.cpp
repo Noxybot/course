@@ -66,6 +66,8 @@ void FormForSearchingAgreements::on_pushButton_clicked()
     info.card_number = ui->comboBox_credit_card->currentText();
     info.place_id = ui->comboBox_rent_place->currentText();
     info.bike_id = ui->comboBox_bike_id->currentText();
+    info.return_date = ui->dateTimeEdit_return->dateTime().toString("yyyy-MM-ddThh:mm:ss.000");
+    info.sum = ui->lineEdit_sum->text();
     emit sendSearchInfo(info);
 }
 
@@ -78,5 +80,7 @@ void FormForSearchingAgreements::on_pushButton_2_clicked()
     info.card_number = ui->comboBox_credit_card->currentText();
     info.place_id = ui->comboBox_rent_place->currentText();
     info.bike_id = ui->comboBox_bike_id->currentText();
+    info.return_date = ui->dateTimeEdit_return->dateTime().toString("dd/MM/yyyy hh:mm:ss");
+    info.sum = ui->lineEdit_sum->text();
     emit sendFilterInfo(info);
 }

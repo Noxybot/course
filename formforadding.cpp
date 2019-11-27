@@ -64,7 +64,7 @@ void FormForAdding::on_pushButton_add_clicked()
 {
     emit okClicked(ui->dateTimeEdit_start->dateTime().toString("dd/MM/yyyy hh:mm:ss"), ui->dateTimeEdit_end->dateTime().toString("dd/MM/yyyy hh:mm:ss"),
                    ui->comboBox_cred_card->currentText(), ui->comboBox_2_bike_id->currentText().toInt(),
-                   ui->comboBox_3_place_id->currentText().toInt());
+                   ui->comboBox_3_place_id->currentText().toInt(), ui->lineEdit_sum->text().toInt());
     this->close();
 
 }

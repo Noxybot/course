@@ -1,5 +1,4 @@
-QT       += core gui sql
-
+QT       += core gui sql printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -17,6 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     formforadding.cpp \
+    formforaddingbikes.cpp \
+    formforaddingrentplace.cpp \
+    formforagrstats.cpp \
     formforediting.cpp \
     formforsearchingagreements.cpp \
     formforsearchingbikes.cpp \
@@ -27,6 +29,9 @@ SOURCES += \
 HEADERS += \
     ClientInfo.h \
     formforadding.h \
+    formforaddingbikes.h \
+    formforaddingrentplace.h \
+    formforagrstats.h \
     formforediting.h \
     formforsearchingagreements.h \
     formforsearchingbikes.h \
@@ -35,6 +40,9 @@ HEADERS += \
 
 FORMS += \
     formforadding.ui \
+    formforaddingbikes.ui \
+    formforaddingrentplace.ui \
+    formforagrstats.ui \
     formforediting.ui \
     formforsearchingagreements.ui \
     formforsearchingbikes.ui \
