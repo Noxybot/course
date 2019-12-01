@@ -8,6 +8,8 @@
 #include "formforaddingbikes.h"
 #include "formforaddingrentplace.h"
 #include "formforagrstats.h"
+#include "formforagrstats2.h" // expired + by date
+#include "formforclientsstats.h"
 #include "ClientInfo.h"
 
 #include <QDebug>
@@ -109,6 +111,18 @@ private slots:
     void ShowStats()
     {
         auto t = new FormForAgrStats();
+        t->show();
+    }
+
+    void ShowStatsForAgrs2()
+    {
+        auto t = new FormForAgrStats2();
+        t->show();
+    }
+
+    void ShowClientsStats()
+    {
+        auto t = new FormForClientsStats;
         t->show();
     }
 

@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
     QObject::connect(clientsMenu->addAction("Поиск / Фильтрация"), SIGNAL(triggered()), w, SLOT(show_search_clients()));
   //  clientsMenu->addMenu(clientsSortMenu);
-
+    QObject::connect(clientsMenu->addAction("Статистика"), SIGNAL(triggered()), w, SLOT(ShowClientsStats()));
     QMenu *bikesMenu = new QMenu("Велосипеды");
     QObject::connect(bikesMenu->addAction("Поиск / Фильтрация"), SIGNAL(triggered()), w, SLOT(show_bikes_menu()));
 
@@ -42,7 +42,10 @@ int main(int argc, char *argv[])
 //    agreementsSortMenu->addAction("По убыванию");
 //agreementsMenu->addMenu(agreementsSortMenu);
 
+
     QObject::connect(agreementsMenu->addAction("Поиск / Фильтрация"), SIGNAL(triggered()), w, SLOT(show_agreements_menu()));
+    QObject::connect(agreementsMenu->addAction("Статистика"), SIGNAL(triggered()), w, SLOT(ShowStatsForAgrs2()));
+
 
 
     mainMenu->addMenu(clientsMenu);

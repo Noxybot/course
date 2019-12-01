@@ -19,6 +19,8 @@ SOURCES += \
     formforaddingbikes.cpp \
     formforaddingrentplace.cpp \
     formforagrstats.cpp \
+    formforagrstats2.cpp \
+    formforclientsstats.cpp \
     formforediting.cpp \
     formforsearchingagreements.cpp \
     formforsearchingbikes.cpp \
@@ -32,6 +34,8 @@ HEADERS += \
     formforaddingbikes.h \
     formforaddingrentplace.h \
     formforagrstats.h \
+    formforagrstats2.h \
+    formforclientsstats.h \
     formforediting.h \
     formforsearchingagreements.h \
     formforsearchingbikes.h \
@@ -43,6 +47,8 @@ FORMS += \
     formforaddingbikes.ui \
     formforaddingrentplace.ui \
     formforagrstats.ui \
+    formforagrstats2.ui \
+    formforclientsstats.ui \
     formforediting.ui \
     formforsearchingagreements.ui \
     formforsearchingbikes.ui \
