@@ -27,7 +27,7 @@ private slots:
     void on_pushButton_2_clicked();
 
 private:
-    ClientInfo FormForSearchingClients::CollectInfo();
+    ClientInfo CollectInfo();
     Ui::FormForSearchingClients *ui;
     QSqlTableModel* found_clients;
 };
