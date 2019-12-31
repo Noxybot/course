@@ -25,6 +25,7 @@ SOURCES += \
     formforsearchingagreements.cpp \
     formforsearchingbikes.cpp \
     formforsearchingclients.cpp \
+    formforsendingreport.cpp \
     main.cpp \
     widget.cpp
 
@@ -40,6 +41,7 @@ HEADERS += \
     formforsearchingagreements.h \
     formforsearchingbikes.h \
     formforsearchingclients.h \
+    formforsendingreport.h \
     widget.h
 
 FORMS += \
@@ -53,9 +55,55 @@ FORMS += \
     formforsearchingagreements.ui \
     formforsearchingbikes.ui \
     formforsearchingclients.ui \
+    formforsendingreport.ui \
     widget.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+QT       += core network
+
+#TARGET = SMTPEmail
+
+# Build as an application
+#TEMPLATE = app
+
+# Build as a library
+#TEMPLATE = lib
+DEFINES += SMTP_BUILD
+win32:CONFIG += dll
+
+SOURCES += \
+    src/emailaddress.cpp \
+    src/mimeattachment.cpp \
+    src/mimefile.cpp \
+    src/mimehtml.cpp \
+    src/mimeinlinefile.cpp \
+    src/mimemessage.cpp \
+    src/mimepart.cpp \
+    src/mimetext.cpp \
+    src/smtpclient.cpp \
+    src/quotedprintable.cpp \
+    src/mimemultipart.cpp \
+    src/mimecontentformatter.cpp \
+
+HEADERS  += \
+    src/emailaddress.h \
+    src/mimeattachment.h \
+    src/mimefile.h \
+    src/mimehtml.h \
+    src/mimeinlinefile.h \
+    src/mimemessage.h \
+    src/mimepart.h \
+    src/mimetext.h \
+    src/smtpclient.h \
+    src/SmtpMime \
+    src/quotedprintable.h \
+    src/mimemultipart.h \
+    src/mimecontentformatter.h \
+    src/smtpexports.h
+
+

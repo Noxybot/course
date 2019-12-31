@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     mainMenu->addMenu(agreementsMenu);
 
     QObject::connect(mainMenu->addAction("Месячный отчет"), SIGNAL(triggered()), w, SLOT(PrintAgreements()));
-
+    QObject::connect(mainMenu->addAction("Отправить месячный отчет"), SIGNAL(triggered()), w, SLOT(SendReport()));
 
     QObject::connect(mainMenu->addAction("Выход"), SIGNAL(triggered()), &a, SLOT(quit()));
     wind.setMenuBar(menuBar);

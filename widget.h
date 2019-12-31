@@ -11,7 +11,7 @@
 #include "formforagrstats2.h" // expired + by date
 #include "formforclientsstats.h"
 #include "ClientInfo.h"
-
+#include "formforsendingreport.h"
 #include <QDebug>
 
 #include <QWidget>
@@ -184,6 +184,11 @@ private slots:
         }
 
         delete document;
+    }
+    void SendReport()
+    {
+        auto t = new FormForSendingReport();
+        t->show();
     }
 
 
