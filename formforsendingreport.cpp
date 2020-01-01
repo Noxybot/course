@@ -35,7 +35,7 @@ void FormForSendingReport::on_pushButton_clicked()
 
         MimeMessage message;
 
-        message.setSender(new EmailAddress("eduard.voronkin@nure.ua", "Your Name"));
+        message.setSender(new EmailAddress("eduard.voronkin@nure.ua", "Eduard Voronkin"));
         message.addRecipient(new EmailAddress(email, ""));
         message.setSubject("Отчет за месяц");
 
@@ -80,12 +80,12 @@ void FormForSendingReport::on_pushButton_clicked()
 
        // QTextDocument *document = new QTextDocument();
        // document->setHtml(strStream);
-        qDebug() << strStream;
+        //qDebug() << strStream;
+        qDebug() << email;
 
+        MimeHtml text;
 
-        MimeText text;
-
-        text.setText(strStream);
+        text.setHtml(strStream);
 
         // Now add it to the mail
 
@@ -93,9 +93,20 @@ void FormForSendingReport::on_pushButton_clicked()
 
         // Now we can send the mail
 
-        smtp.connectToHost();
-        smtp.login();
-        smtp.sendMail(message);
+        if (!smtp.connectToHost()) {
+        qDebug() << "Failed to connect to host!" << endl;
+        //return -1;
+    }
+
+    if (!smtp.login()) {
+        qDebug() << "Failed to login!" << endl;
+       // return -2;
+    }
+
+    if (!smtp.sendMail(message)) {
+        qDebug() << "Failed to send mail!" << endl;
+        //return -3;
+    }
         smtp.quit();
 
 
